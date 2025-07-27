@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: rag
+  ai:
+    ollama:
+      chat:
+        model: llama3.2:latest
+      init:
+        pull-model-strategy: WHEN_MISSING
+        timeout: 10m
+    vectorstore:
+      pgvector:
+        initialize-schema: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/vectordb
+    username: testuser
+    password: testpwd
