@@ -23,7 +23,9 @@ public class ChatController {
 
     private static final Logger logger = LoggerFactory.getLogger(ChatController.class);
 
+    // private final OpenAiChatModel openAIChatModel;
     private final OllamaChatModel ollamaChatModel;
+
     private final VectorStore vectorStore;
     private final ChatMemory chatMemory;
 

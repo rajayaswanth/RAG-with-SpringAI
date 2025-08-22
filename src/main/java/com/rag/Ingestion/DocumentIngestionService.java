@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class DocumentIngestionService implements CommandLineRunner {
 
-    @Value("classpath:/pdf/spring-boot-reference.pdf")
+    @Value("classpath:/pdf/legacy-manual.pdf")
     private Resource resource;
 
     private final VectorStore vectorStore;
