@@ -55,7 +55,7 @@ public class ChatController {
                 logger.info("Chat model initialized successfully");
                 chatClient.prompt()
                         .advisors(
-                            // MessageChatMemoryAdvisor.builder(chatMemory).build(),
+                            MessageChatMemoryAdvisor.builder(chatMemory).build(),
                             QuestionAnswerAdvisor.builder(vectorStore).build()
                         )
                         .user(message)

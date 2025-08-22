@@ -1,13 +1,20 @@
 spring:
   application:
     name: rag
+  docker:
+    compose:
+      enabled: true
+      lifecycle-management: start-and-stop
+      stop:
+        command: down
+        timeout: 5s
   ai:
     openai:
       moderation:
         options:
           model: google/gemma-3-12b
       base-url: http://localhost:1234
-      api-key: AIzaSyAf5imwolbNq1ye-WDVxZObV-W8ZPAoaVE
+      api-key: 
     ollama:
       embedding:
         model: nomic-embed-text
