@@ -5,6 +5,7 @@ import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
 import org.springframework.ai.chat.client.advisor.vectorstore.QuestionAnswerAdvisor;
 import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.ai.ollama.OllamaChatModel;
+import org.springframework.ai.openai.OpenAiChatModel;
 import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,17 +24,17 @@ public class ChatController {
 
     private static final Logger logger = LoggerFactory.getLogger(ChatController.class);
 
-    // private final OpenAiChatModel openAIChatModel;
-    private final OllamaChatModel ollamaChatModel;
+    private final OpenAiChatModel openAIChatModel;
+    // private final OllamaChatModel ollamaChatModel;
 
     private final VectorStore vectorStore;
     private final ChatMemory chatMemory;
 
-    public ChatController(OllamaChatModel ollamaChatModel, VectorStore vectorStore, ChatMemory chatMemory) {
-        if (ollamaChatModel == null || vectorStore == null || chatMemory == null) {
+    public ChatController(OpenAiChatModel openAIChatModel, VectorStore vectorStore, ChatMemory chatMemory) {
+        if (openAIChatModel == null || vectorStore == null || chatMemory == null) {
             throw new IllegalArgumentException("Dependencies cannot be null");
         }
-        this.ollamaChatModel = ollamaChatModel;
+        this.openAIChatModel = openAIChatModel;
         this.vectorStore = vectorStore;
         this.chatMemory = chatMemory;
     }
@@ -50,11 +51,11 @@ public class ChatController {
                 logger.info("Starting chat processing for message: {}", message);
                 logger.info("Initializing chat model and setting up client...");
                 
-                ChatClient chatClient = ChatClient.builder(ollamaChatModel).build();
+                ChatClient chatClient = ChatClient.builder(openAIChatModel).build();
                 logger.info("Chat model initialized successfully");
                 chatClient.prompt()
                         .advisors(
-                            MessageChatMemoryAdvisor.builder(chatMemory).build(),
+                            // MessageChatMemoryAdvisor.builder(chatMemory).build(),
                             QuestionAnswerAdvisor.builder(vectorStore).build()
                         )
                         .user(message)

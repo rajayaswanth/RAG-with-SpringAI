@@ -1,5 +1,5 @@
 services:
-  # ollama:
+  # ollima:
   #   image: 'ollama/ollama:latest'
   #   ports:
   #     - '11434'
@@ -12,4 +12,5 @@ services:
     labels:
       - "org.springframework.boot.service-connection=postgres"
     ports:
-      - '5432'
+      - '5432:5432'
+    restart: always

@@ -2,15 +2,15 @@ spring:
   application:
     name: rag
   ai:
-    # openai:
-    #   moderation:
-    #     options:
-    #       model: google/gemma-3-12b
-    #   base-url: http://localhost:1234
-    #   api-key: AIzaSyAf5imwolbNq1ye-WDVxZObV-W8ZPAoaVE
+    openai:
+      moderation:
+        options:
+          model: google/gemma-3-12b
+      base-url: http://localhost:1234
+      api-key: AIzaSyAf5imwolbNq1ye-WDVxZObV-W8ZPAoaVE
     ollama:
-      chat:
-        model: llama3.2:latest
+      embedding:
+        model: nomic-embed-text
       init:
         pull-model-strategy: WHEN_MISSING
         timeout: 10m
