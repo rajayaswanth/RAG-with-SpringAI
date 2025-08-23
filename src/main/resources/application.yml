@@ -10,17 +10,14 @@ spring:
         timeout: 5s
   ai:
     openai:
+      embedding:
+        options:
+          model: nomic-ai/text-embedding-nomic-embed-text-v1.5
       moderation:
         options:
           model: google/gemma-3-12b
       base-url: http://localhost:1234
-      api-key: 
-    ollama:
-      embedding:
-        model: nomic-embed-text
-      init:
-        pull-model-strategy: WHEN_MISSING
-        timeout: 10m
+      api-key: test
     vectorstore:
       pgvector:
         initialize-schema: true
