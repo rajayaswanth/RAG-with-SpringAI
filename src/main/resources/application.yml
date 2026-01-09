@@ -1,6 +1,13 @@
 spring:
   application:
     name: rag
+  docker:
+    compose:
+      enabled: true
+      lifecycle-management: start-and-stop
+      stop:
+        command: down
+        timeout: 5s
   ai:
     # openai:
     #   moderation:
@@ -14,6 +21,15 @@ spring:
       init:
         pull-model-strategy: WHEN_MISSING
         timeout: 10m
+    openai:
+      embedding:
+        options:
+          model: nomic-ai/text-embedding-nomic-embed-text-v1.5
+      moderation:
+        options:
+          model: google/gemma-3-12b
+      base-url: http://localhost:1234
+      api-key: test
     vectorstore:
       pgvector:
         initialize-schema: true
