@@ -9,6 +9,18 @@ spring:
         command: down
         timeout: 5s
   ai:
+    # openai:
+    #   moderation:
+    #     options:
+    #       model: google/gemma-3-12b
+    #   base-url: http://localhost:1234
+    #   api-key: your api key
+    ollama:
+      chat:
+        model: llama3.2:latest
+      init:
+        pull-model-strategy: WHEN_MISSING
+        timeout: 10m
     openai:
       embedding:
         options:
