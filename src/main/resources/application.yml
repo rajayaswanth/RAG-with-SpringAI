@@ -7,7 +7,7 @@ spring:
     #     options:
     #       model: google/gemma-3-12b
     #   base-url: http://localhost:1234
-    #   api-key: AIzaSyAf5imwolbNq1ye-WDVxZObV-W8ZPAoaVE
+    #   api-key: your api key
     ollama:
       chat:
         model: llama3.2:latest
